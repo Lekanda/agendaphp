@@ -27,6 +27,61 @@
           </div>
      </form>
 </div>
+<div class="bg-blanco contenedor sombra contactos">
+    <div class="contenedor-contactos">
+        <h2>Contactos</h2>
+
+        <input type="text" id="buscar" class="buscador sombra" placeholder="Buscar contactos...">
+
+        <p class="total-contactos"><span>2</span> Contactos</p>
+
+        <div class="contenedor-tabla">
+            <table id="listado-contactos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Andres Bernaola</td>
+                        <td>Lekanda S.A</td>
+                        <td>685969898</td>
+                        <td>
+                            <a class="btn-editar btn" href="#">
+                                <i class="fas fa-pen-square"></i>
+                            </a>
+
+                            <button data-id="1" type="button" class="btn-borrar btn">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Luis Lopez</td>
+                        <td>Lekanda S.L</td>
+                        <td>685962246</td>
+                        <td>
+                            <a class="btn-editar btn" href="#">
+                                <i class="fas fa-pen-square"></i>
+                            </a>
+
+                            <button data-id="1" type="button" class="btn-borrar btn">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
 
 
 
