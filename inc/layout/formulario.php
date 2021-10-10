@@ -4,11 +4,11 @@
         <input type="text" placeholder="Pon tu nombre" id="nombre">
     </div>
     <div class="campo">
-        <label for="nombre">Empresa:</label>
+        <label for="empresa">Empresa:</label>
         <input type="text" placeholder="Pon tu empresa" id="empresa">
     </div>
     <div class="campo">
-        <label for="nombre">Telefono:</label>
+        <label for="telefono">Telefono:</label>
         <input type="tel" placeholder="Pon tu telefono" id="telefono">
     </div>
 </div>
