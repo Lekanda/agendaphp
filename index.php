@@ -1,4 +1,5 @@
 <?php
+    error_reporting(E_ALL ^ E_NOTICE);
     include 'inc/funciones/funciones.php';
     include 'inc/layout/header.php'; 
 ?>
