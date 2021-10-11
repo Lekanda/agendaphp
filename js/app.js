@@ -60,7 +60,7 @@ function insertarDB(datos) {
 
             // Leemos la respuesta de PHP
             const respuesta = JSON.parse(xhr.responseText);
-            // console.log(respuesta['empresa']);
+            console.log(respuesta);
             // console.log(respuesta.empresa);
 
 
