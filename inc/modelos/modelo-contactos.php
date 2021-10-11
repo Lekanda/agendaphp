@@ -1,7 +1,11 @@
 <?php
+// error_reporting(E_ALL ^ E_NOTICE);
+
 // Crea un arreglo asociativo con el POST del form.
 // echo json_encode($_POST);
 
+
+if(isset($_POST['accion'])){
 if ($_POST['accion'] == 'crear') {
     // Crear un nuevo registro en la DB
 
@@ -37,4 +41,11 @@ if ($_POST['accion'] == 'crear') {
     }
     echo json_encode($respuesta);
 }
+}
 
+
+if(isset($_GET['accion'])){
+if ($_GET['accion'] == 'borrar') {
+    echo json_encode($_GET);
+}
+}

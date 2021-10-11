@@ -8,6 +8,9 @@ eventListeners();
 function eventListeners() { 
     // Cuando el formulario de crear o editar se ejecuta.
     formularioContactos.addEventListener('submit', leerFormulario);
+
+    // Listener para eliminar el boton
+    listadoContactos.addEventListener('click', eliminarContacto);
 }
 
 function leerFormulario(e) { 
@@ -112,10 +115,6 @@ function insertarDB(datos) {
             // Mostrar la notificacion
             mostrarNotificacion('Contacto creado correctamente', 'correcto');
 
-
-
-
-
         }
     }
     // Enviar los datos
@@ -123,6 +122,43 @@ function insertarDB(datos) {
 }
 
 
+
+// Eliminar contacto del formulario del index
+function eliminarContacto(e){
+    // console.log('eliminado....');
+    // console.log(e.target.parentElement.classList.contains('btn-borrar'));
+
+    if (e.target.parentElement.classList.contains('btn-borrar')) {
+        // Tomar el ID
+        const id = e.target.parentElement.getAttribute('data-id');
+        // console.log(id);
+
+        //Preguntar al usuario si esta seguro
+        const respuesta = confirm('¿Estas seguro?');
+        if (respuesta) {
+            // console.log('Estoy seguro');
+
+            // Llamar a AJAX para borrar el contacto 
+            // Crear el objeto
+            const xhr = new XMLHttpRequest();
+            // Abrir la conexion
+            xhr.open('GET',`inc/modelos/modelo-contactos.php?id=${id}&accion=borrar`,true);
+            // Leer la respuesta
+            xhr.onload = function () {
+                if(this.status === 200){
+                    const resultado = xhr.responseText;
+                    console.log(resultado);
+                }
+            }
+            // Enviar la peticion
+            xhr.send();
+        }
+
+    }
+
+
+
+}
 
 
 
