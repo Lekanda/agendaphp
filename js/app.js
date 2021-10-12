@@ -1,5 +1,6 @@
 const formularioContactos = document.querySelector('#contacto'),
-      listadoContactos = document.querySelector('#listado-contactos tbody');
+      listadoContactos = document.querySelector('#listado-contactos tbody'),
+      inputBuscador = document.querySelector('#buscar');
 
 
 eventListeners();
@@ -13,6 +14,9 @@ function eventListeners() {
     if(listadoContactos){
         listadoContactos.addEventListener('click', eliminarContacto);
     }
+
+    // Listener para el buscador
+    inputBuscador.addEventListener('input', buscarContactos);
 }
 
 function leerFormulario(e) { 
@@ -160,7 +164,6 @@ function actualizarRegistro(datos){
 }
 
 
-
 // Eliminar contacto del formulario del index
 function eliminarContacto(e){
     // console.log('eliminado....');
@@ -211,14 +214,12 @@ function eliminarContacto(e){
 
 
 
-
-
 // Notificacion en pantalla de falta de datos en Form.
 function mostrarNotificacion(mensaje,clase){
     const notificacion = document.createElement('div');
     notificacion.classList.add(clase,'notificacion','sombra');
     notificacion.textContent = mensaje;
-
+    
     //Formulario
     formularioContactos.insertBefore(notificacion, document.querySelector('form legend'));
     // Ocultar y mostrar la notificacion.
@@ -231,4 +232,29 @@ function mostrarNotificacion(mensaje,clase){
             }, 500);
         }, 3000);
     }, 100);
+}
+
+
+
+//Buscador de contactos
+function buscarContactos(e){
+    // console.log(e.target.value);
+    // "i" : Para que de igual Mayus o Minus
+    const expresion = new RegExp(e.target.value, "i"),
+          registros = document.querySelectorAll('tbody tr');
+
+    registros.forEach(registro=>{
+        // Esconde los resultados de tabla en index.
+        registro.style.display = 'none';
+
+        // registro.childNodes[1]: Trae los nombres de cada contacto en la DB
+        // console.log(registro.childNodes[1].textContent);
+        // console.log(registro.childNodes[1].textContent.replace(/\s/g, " ").search(expresion) != -1);
+        // repplace quita los espacios
+        if(registro.childNodes[1].textContent.replace(/\s/g, " ").search(expresion) != -1 ){
+            registro.style.display = 'table-row';
+        }
+    })
+
+
 }
