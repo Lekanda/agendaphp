@@ -45,6 +45,11 @@ function leerFormulario(e) {
             insertarDB(infoContacto);
         } else {
             // Editar el contacto
+            //Leer el ID
+            const idRegistro = document.querySelector('#id').value;
+            // console.log(idRegistro);
+            infoContacto.append('id', idRegistro);
+            actualizarRegistro(infoContacto);
 
         }
 
@@ -124,6 +129,37 @@ function insertarDB(datos) {
 }
 
 
+function actualizarRegistro(datos){
+    // console.log(...datos);//Ver datos en una copia, solo se puede asi.
+
+    // Conexion AJAX. Crear el objeto
+    const xhr = new XMLHttpRequest();
+    // Abrir la conexion
+    xhr.open('POST','inc/modelos/modelo-contactos.php',true);
+    // leer la respuesta
+    xhr.onload = function(){
+        if(this.status == 200){
+            const respuesta = JSON.parse(xhr.responseText);
+            // console.log(respuesta);
+
+            if(respuesta.respuesta === 'correcto'){
+                // Mostrar notificacion 
+                mostrarNotificacion('Contacto actualizado correctamente','correcto');
+            }else{
+                // Hubo un error
+                mostrarNotificacion('No se actualizo el contacto','error');
+            }
+            // Despues de 3 segundos redireciona al index
+            setTimeout(() => {
+                window.location.href = 'index.php';
+            }, 4000);
+        }
+    }
+    // Enviar la peticion
+    xhr.send(datos);
+}
+
+
 
 // Eliminar contacto del formulario del index
 function eliminarContacto(e){
@@ -170,8 +206,6 @@ function eliminarContacto(e){
         }
 
     }
-
-
 
 }
 
